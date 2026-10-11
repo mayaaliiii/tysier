@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b0b0c" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="التيسير" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="icon-192.png" />
+  <title>مركز التيسير | الإدارة</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="mobile.css" />
+</head>
+<body>
+  <div id="app" class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">ت</div>
+        <div>
+          <strong>مركز التيسير</strong>
+          <span>لوحة الإدارة</span>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="التنقل">
+        <button class="nav-item active" data-view="dashboard"><span>⌂</span> الرئيسية</button>
+        <button class="nav-item" data-view="products"><span>▦</span> البضاعة</button>
+        <button class="nav-item" data-view="invoices"><span>▤</span> الفواتير</button>
+        <button class="nav-item" data-view="customers"><span>♙</span> الزبائن</button>
+        <button class="nav-item" data-view="slider"><span>◈</span> مختارات التيسير</button>
+        <button class="nav-item" data-view="companies"><span>◇</span> الشركات والعلامات</button>
+        <button class="nav-item" data-view="ai"><span>✦</span> مساعد التيسير الذكي</button>
+        <button class="nav-item" data-view="settings"><span>⚙</span> الإعدادات</button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="status-dot"></div>
+        <div><strong>النظام يعمل محلياً</strong><small>البيانات محفوظة على هذا الجهاز</small></div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div>
+          <div class="eyebrow">نظام الإدارة الداخلي</div>
+          <h1 id="page-title">الرئيسية</h1>
+        </div>
+        <div class="top-actions">
+          <div class="exchange-pill"><span>سعر الصرف</span><strong id="exchange-top">—</strong><small>ل.س / $</small></div>
+          <button class="icon-btn" id="quick-add" title="إضافة بضاعة">＋</button>
+        </div>
+      </header>
+
+      <section id="view-dashboard" class="view active-view">
+        <div class="home-head">
+          <svg class="home-roof" viewBox="0 0 640 130" aria-hidden="true"><path d="M8 124 L320 14 L632 124" fill="none" stroke="url(#rg)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M60 124 L320 36 L580 124" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="2" stroke-linecap="round"/><defs><linearGradient id="rg" x1="0" x2="1"><stop offset="0" stop-color="#f6dc9a"/><stop offset="1" stop-color="#b98a2b"/></linearGradient></defs></svg>
+          <h2 class="home-title">التيسير</h2>
+          <div class="home-bar"><span>نظام الإدارة الداخلي</span><span id="home-date" dir="ltr"></span></div>
+        </div>
+
+        <div class="dashboard-duo">
+          <section class="rate-board rate-only">
+            <div class="rate-head"><div><span class="section-kicker">الليرة اليوم</span><h3>أسعار الصرف</h3></div><button class="rate-refresh" id="home-refresh-exchange" title="إعادة تحميل">↻</button></div>
+            <iframe id="lyra-iframe" class="lyra-iframe" scrolling="no" src="https://www.sp-today.com/currencies" title="الليرة اليوم" loading="lazy" referrerpolicy="no-referrer"></iframe>
+            <div class="rate-iframe-head"><span>المصدر: الليرة اليوم</span><a href="https://www.sp-today.com/currencies" target="_blank" rel="noreferrer">فتح المصدر ↗</a></div>
+          </section>
+          <section class="home-slider panel">
+            <div class="panel-head"><div><span class="section-kicker">الواجهة</span><h3>✦ مختارات التيسير</h3></div><button class="text-btn" data-go="slider">إدارة ←</button></div>
+            <div id="home-slider" class="home-slider-stage"></div>
+          </section>
+        </div>
+
+        <section class="panel center-info-panel">
+          <div class="panel-head"><div><span class="section-kicker">معلومات المركز</span><h3>التواصل وتسجيل الطلبات</h3></div></div>
+          <div class="center-info-grid">
+            <div><b>العنوان</b><span id="home-address">—</span></div>
+            <div><b>تسجيل الطلبات</b><span id="home-orders-time">—</span></div>
+            <div class="barcode-card"><b>شام كاش</b><img id="home-sham-cash-barcode" alt="باركود شام كاش"></div>
+            <div class="barcode-card"><b>القناة</b><img id="home-channel-barcode" alt="باركود القناة"></div>
+          </div>
+        </section>
+
+        <div class="stats-grid">
+          <div class="stat-card"><span>إجمالي المنتجات</span><strong id="stat-products">0</strong><small>صنف مسجل</small></div>
+          <div class="stat-card"><span>الفواتير</span><strong id="stat-invoices">0</strong><small>كل الحالات</small></div>
+          <div class="stat-card"><span>الزبائن</span><strong id="stat-customers">0</strong><small>ملف عميل</small></div>
+                  </div>
+
+        <div class="dashboard-grid">
+          <section class="panel">
+            <div class="panel-head"><div><span class="section-kicker">آخر الإضافات</span><h3>أحدث المنتجات</h3></div><button class="text-btn" data-go="products">عرض الكل ←</button></div>
+            <div id="latest-products" class="mini-products"></div>
+          </section>
+          <section class="panel">
+            <div class="panel-head"><div><span class="section-kicker">متابعة</span><h3>آخر الفواتير</h3></div><button class="text-btn" data-go="invoices">عرض الكل ←</button></div>
+            <div id="latest-invoices" class="mini-invoices"></div>
+          </section>
+        </div>
+      </section>
+
+      <section id="view-products" class="view">
+        <div class="view-head"><div><span class="section-kicker">المستودع</span><h2>البضاعة والمنتجات</h2></div><div class="head-actions"><button class="secondary-btn" id="import-pdf-btn">📥 استيراد نشرة أسعار</button><button class="primary-btn" id="add-product-btn">＋ إضافة بضاعة</button></div></div>
+        <div class="toolbar">
+          <label class="search-box"><span>⌕</span><input id="product-search" type="search" placeholder="ابحث باسم المنتج أو الكود..." autocomplete="off" /></label>
+          <div id="category-filters" class="filter-row"></div>
+        </div>
+        <div class="bulk-bar"><button class="small-btn" id="bulk-all" type="button">تحديد الكل</button><span id="bulk-count">0 محدد</span><button class="small-btn danger" id="bulk-delete" type="button">🗑️ حذف المحدد</button></div>
+        <div id="products-grid" class="products-grid"></div>
+      </section>
+
+      <section id="view-invoices" class="view">
+        <div class="view-head"><div><span class="section-kicker">المبيعات</span><h2>الفواتير والطلبات</h2></div><button class="primary-btn" id="add-invoice-btn">＋ فاتورة جديدة</button></div>
+        <div id="invoices-list" class="invoices-list"></div>
+      </section>
+
+      <section id="view-customers" class="view">
+        <div class="view-head"><div><span class="section-kicker">العملاء</span><h2>الزبائن</h2></div></div>
+        <div id="customers-grid" class="customers-grid"></div>
+      </section>
+
+      <section id="view-slider" class="view">
+        <div class="view-head"><div><span class="section-kicker">الواجهة</span><h2>السلايدر</h2></div><button class="primary-btn" id="add-slide-btn">＋ إضافة شريحة</button></div>
+        <div class="notice">السعر يتحدث تلقائياً عند توفر الإنترنت، مع حفظ آخر سعر ناجح كنسخة احتياطية. لا يوجد IFrame. الصور تُحفظ محلياً داخل البرنامج.</div><div id="slider-preview" class="slider-preview" data-index="0"></div>
+        <div id="slides-grid" class="slides-grid"></div>
+      </section>
+
+      <section id="view-companies" class="view">
+  <div class="view-head"><div><span class="section-kicker">الهوية</span><h2>الشركات والعلامات التجارية</h2></div><button class="primary-btn" id="add-company-btn">＋ إضافة شركة</button></div>
+  <div class="notice">احفظ شعار الشركة مرة واحدة، ويمكن استخدامه لاحقاً في مقترحات الإعلانات والسلايدر.</div>
+  <div id="companies-grid" class="companies-grid"></div>
+</section>
+
+<section id="view-ai" class="view">
+  <div class="view-head"><div><span class="section-kicker">ذكاء مساعد</span><h2>مساعد التيسير الذكي</h2></div></div>
+  <div class="ai-layout">
+    <section class="panel ai-card"><span class="section-kicker">قاعدة العمل</span><h3>AI يقترح — الإدارة تعتمد</h3><p class="muted">المساعد ينشئ عدة اقتراحات، وكل اقتراح يدخل قائمة المراجعة. لا يتم نشر أو حفظ أي اقتراح قبل قرارك.</p>
+      <label>اختر منتجاً من بضاعتك<select id="ai-product-select"></select></label>
+      <label>معلومات إضافية<textarea id="ai-product-info" rows="4" placeholder="الشركة، المقاس، الاستخدام، السعر..." ></textarea></label>
+      <div class="ai-actions"><button class="primary-btn" id="ai-suggest-product">✦ اقتراح محتوى المنتج</button><button class="secondary-btn" id="ai-suggest-slider">🎨 أفكار للسلايدر</button></div>
+    </section>
+    <section class="panel ai-result"><div class="panel-head"><div><span class="section-kicker">قائمة المراجعة</span><h3>اقتراحات المساعد</h3></div><span class="ai-badge">كل شيء يحتاج مراجعتك</span></div><div id="ai-result-body" class="ai-result-body"><div class="empty">اختر منتجاً ثم اطلب اقتراحات. ستظهر كلها هنا قبل الاعتماد.</div></div></section>
+  </div>
+  <section class="panel ai-connection"><div class="panel-head"><div><span class="section-kicker">اختياري</span><h3>مساعد الذكاء الاصطناعي (Gemini)</h3></div></div><p class="muted">المساعد يستخدم Gemini عبر طبقة الذكاء الخاصة بالتطبيق: يولّد اقتراحات المحتوى، ويصمم صور المنتجات من <b>قصاصة صورة المنتج الحقيقية من النشرة</b> بنفس هوية التيسير. الصورة الناتجة تبقى نظيفة بلا إطار موبايل أو ساعة أو بطارية أو أزرار، والبلور والعلامة المائية تظهر في واجهة التطبيق وليس داخل صورة المنتج.</p><div class="gemini-key-row"><input id="gemini-key" type="password" placeholder="مفتاح Gemini — لا يتم تضمينه داخل التطبيق" autocomplete="off"/><button class="secondary-btn" id="save-gemini-key">🔐 حفظ آمن</button><button class="secondary-btn" id="test-gemini-key">✓ اختبار الاتصال</button></div><small id="gemini-status" class="muted">لم يتم إعداد Gemini بعد</small></section>
+</section>
+
+<section id="view-settings" class="view">
+        <div class="view-head"><div><span class="section-kicker">التحكم</span><h2>الإعدادات</h2></div></div>
+        <div class="settings-grid">
+          <form class="panel settings-card" id="settings-form">
+            <div class="panel-head"><div><span class="section-kicker">بيانات المركز</span><h3>العنوان والطلبات والباركود</h3></div></div>
+            <label>اسم المدير<input id="setting-manager-name" maxlength="60" placeholder="اسم المدير"></label><label>عنوان المركز<input id="setting-address" placeholder="اكتب العنوان كما تريد ظهوره للزبائن"></label>
+            <div class="form-grid">
+              <label>فتح تسجيل الطلبات<input id="setting-orders-open" type="time" value="09:00"></label>
+              <label>إغلاق تسجيل الطلبات<input id="setting-orders-close" type="time" value="18:00"></label>
+            </div>
+            <div class="barcode-upload-row"><label>باركود شام كاش<input id="setting-sham-cash-barcode" type="file" accept="image/png,image/jpeg,image/webp"></label><img id="sham-cash-barcode-preview" class="barcode-preview" alt="" style="display:none"></div>
+            <div class="barcode-upload-row"><label>باركود القناة<input id="setting-channel-barcode" type="file" accept="image/png,image/jpeg,image/webp"></label><img id="channel-barcode-preview" class="barcode-preview" alt="" style="display:none"></div>
+            <div class="panel-head"><div><span class="section-kicker">العملة</span><h3>سعر الصرف</h3></div></div>
+            <label>الدولار مقابل الليرة السورية<input id="setting-exchange" lang="en" dir="ltr" inputmode="decimal" type="number" min="0" step="0.01" required /><small id="exchange-source" class="muted"></small></label><button class="secondary-btn" type="button" id="refresh-exchange">↻ تحديث سعر الصرف الآن</button>
+            <label>اتجاه الحركة<select id="setting-direction"><option value="up">⬆️ صاعد</option><option value="down">⬇️ نازل</option><option value="flat">— ثابت</option></select></label>
+            <button class="primary-btn" type="submit">حفظ الإعدادات</button>
+          </form>
+          <div class="panel settings-card">
+            <div class="panel-head"><div><span class="section-kicker">التواصل</span><h3>أرقام وروابط المجموعات</h3></div></div>
+            <div id="contacts-list"></div><button class="secondary-btn" id="add-contact">＋ رقم تواصل</button>
+            <hr />
+            <div id="groups-list"></div><button class="secondary-btn" id="add-group">＋ رابط مجموعة</button>
+            <button class="primary-btn full" id="save-links">حفظ التواصل والمجموعات</button>
+          </div>
+          <div class="panel settings-card">
+            <div class="panel-head"><div><span class="section-kicker">السلوك</span><h3>الحذف</h3></div></div>
+            <label class="switch-row"><span>إظهار «تراجع» بعد حذف الفاتورة</span><input id="undo-delete" type="checkbox" /><i></i></label>
+            <p class="muted">عند التفعيل، يظهر زر التراجع لمدة 5 ثوانٍ بعد حذف الفاتورة.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="modal-root"></div>
+  <div id="toast-root" class="toast-root"></div>
+  <input id="pdf-file-input" type="file" accept="application/pdf,image/png,image/jpeg,image/webp" hidden />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+  <script src="web-api.js"></script>
+  <script src="ocr-parser.js"></script>
+  <script src="app.js"></script>
+  <script>if("serviceWorker"in navigator&&location.protocol.startsWith("http"))addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));</script>
+</body>
+</html>
